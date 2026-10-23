@@ -10,6 +10,7 @@ export const blank = {
   address: "",
   hours: "",
   mapQuery: "",
+  mapEmbedUrl: "",
   socials: {},
   primary: "",
   dark: "",

@@ -4,6 +4,12 @@ import { wa } from "../utils/whatsapp.js";
 
 const ContactPage = ({ reviews }) => {
   const site = useSite();
+  const mapQuery = (site.mapQuery || site.address || "").trim();
+  const mapSrc =
+    site.mapEmbedUrl ||
+    (mapQuery
+      ? `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`
+      : "");
   return (
     <>
       <section className="band">
@@ -32,12 +38,28 @@ const ContactPage = ({ reviews }) => {
             </a>
           </div>
         </div>
-        <iframe
-          className="map"
-          title="Mapa"
-          loading="lazy"
-          src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery || site.address)}&output=embed`}
-        />
+        {mapSrc && (
+          <iframe
+            key={mapSrc}
+            className="map"
+            title={`Ubicación de ${site.name || "la tienda"}`}
+            loading="eager"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            src={mapSrc}
+          />
+        )}
+        {mapQuery && (
+          <p className="map-link">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir ubicación en Google Maps ↗
+            </a>
+          </p>
+        )}
       </div>
       {/* Pendiente de integrar las reseñas de Google. Para reactivar, descomentar también el import.
       {site.showReviews !== false && <Reviews items={reviews} />}

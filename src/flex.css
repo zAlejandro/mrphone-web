@@ -328,14 +328,8 @@ footer a:hover {
   opacity: 1;
   transform: none;
 }
-/* Solo navegadores con animaciones ligadas al scroll; en los demás todo se ve normal */
+/* Los productos permanecen visibles: no ligar su opacidad al scroll. */
 @supports (animation-timeline: view()) {
-  @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(40px) scale(0.96);
-    }
-  }
   @keyframes hdr {
     to {
       box-shadow: 0 6px 24px rgba(10, 26, 79, 0.14);
@@ -348,14 +342,6 @@ footer a:hover {
     to {
       transform: scaleX(1);
     }
-  }
-  .card,
-  .catcard,
-  .rev,
-  .pd > * {
-    animation: rise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
   }
   header {
     animation: hdr linear both;

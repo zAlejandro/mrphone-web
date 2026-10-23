@@ -444,6 +444,13 @@ select {
   margin-top: 24px;
 }
 
+.map-link {
+  margin-top: 12px;
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Pie de página */
 footer {
   background: var(--navy);

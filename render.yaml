@@ -1,0 +1,12 @@
+# Aplicar con Render Blueprints. En un sitio existente configurado manualmente,
+# agregar tambien la regla en Redirects/Rewrites del panel de Render.
+services:
+  - type: web
+    name: mrphone
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
