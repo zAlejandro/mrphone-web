@@ -2,28 +2,21 @@
 
 ## Rutas de React
 
-El proyecto usa HashRouter para que la recarga funcione sin reglas especiales
-en Render. Después de publicar, abrir la portada y navegar con el menú.
-Las direcciones tendrán este formato:
+El proyecto usa BrowserRouter con URLs sin `#`:
 
-- `/#/productos`
-- `/#/contacto`
-- `/#/producto/ID`
+- `/productos`
+- `/contacto`
+- `/producto/ID`
 
-La parte que sigue a `#` la procesa React; el servidor recibe solamente `/`.
-Comprobar que al recargar se conservan la pantalla y los filtros de categoría.
-
-Las direcciones antiguas sin `#`, como `/productos`, siguen necesitando
-configuración del servidor: el cambio de router no puede interceptar un 404
-antes de que cargue la web. Para que Render entregue también esas rutas,
-añadir en el Static Site, en **Redirects/Rewrites**, esta regla:
+Para que las visitas directas y las recargas funcionen, mantener esta regla
+en el Static Site de Render, en **Redirects/Rewrites**:
 
 | Source | Destination | Action |
 | --- | --- | --- |
 | `/*` | `/index.html` | `Rewrite` |
 
-Esta regla es opcional con las nuevas URLs con `#`. Para volver a usar las
-URLs sin `#`, primero aplicar la regla y después restaurar BrowserRouter.
+Después de publicar, comprobar la recarga en esas rutas y que se conservan
+los filtros de categoría. Usar Rewrite, no Redirect.
 
 `render.yaml` conserva la regla para despliegues administrados mediante
 Blueprints. Subir ese archivo no configura por sí solo un sitio creado
