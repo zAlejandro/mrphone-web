@@ -1,0 +1,387 @@
+/* Detallitos innecesarios. Todo es CSS; nada arranca oculto por JS y se respeta prefers-reduced-motion. */
+html {
+  scroll-behavior: smooth;
+}
+::selection {
+  background: var(--blue);
+  color: #fff;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--bg);
+}
+input {
+  accent-color: var(--blue);
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes float {
+  50% {
+    transform: translateY(-12px) rotate(1.2deg);
+  }
+}
+@keyframes drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 60%;
+  }
+}
+@keyframes sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+@keyframes mq {
+  to {
+    transform: translateX(-25%);
+  }
+}
+@keyframes bg {
+  to {
+    background-position: 100% 0;
+  }
+}
+@keyframes ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 18px rgba(34, 197, 94, 0);
+  }
+}
+main > * {
+  animation: in 0.45s ease-out;
+}
+.ticker {
+  background: var(--navy);
+  color: #c7d4f5;
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker div {
+  display: inline-flex;
+  padding: 7px 0;
+  animation: mq 30s linear infinite;
+}
+.ticker:hover div {
+  animation-play-state: paused;
+}
+.ticker span {
+  padding-right: 28px;
+}
+header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(1.4) blur(12px);
+}
+.logo img {
+  transition: transform 0.4s;
+}
+.logo:hover img {
+  transform: rotate(-6deg) scale(1.08);
+}
+.nav a,
+.nav a.active {
+  position: relative;
+  border-color: transparent;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav a:hover::after,
+.nav a.active::after {
+  transform: scaleX(1);
+}
+.cats a {
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.2s;
+}
+.cats a:hover {
+  transform: translateY(-1px);
+}
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.15s,
+    box-shadow 0.25s;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+}
+.btn:hover::after {
+  transform: translateX(120%);
+  transition: transform 0.7s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(27, 79, 216, 0.35);
+}
+.btn.wa:hover {
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.hero {
+  position: relative;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      500px 300px at 20% 30%,
+      rgba(56, 189, 248, 0.35),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 400px at 80% 70%,
+      rgba(27, 79, 216, 0.55),
+      transparent 70%
+    );
+  background-size: 140% 140%;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+.hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  animation: in 0.8s both;
+}
+.hero p {
+  animation: in 0.8s 0.15s both;
+}
+.hero .row {
+  animation: in 0.8s 0.3s both;
+}
+.hero-img {
+  animation: float 7s ease-in-out infinite;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+.trust {
+  overflow: hidden;
+}
+.trust::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: sweep 6s 1s infinite;
+}
+.trust span {
+  display: inline-block;
+  transition: transform 0.4s;
+}
+.trust > div:hover span {
+  transform: rotate(-12deg) scale(1.25);
+}
+.card > a {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.card,
+.catcard,
+.rev {
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+.card img,
+.catcard img,
+.pd img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.price {
+  position: relative;
+  width: max-content;
+}
+.price::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  background: var(--sky);
+  transform: scaleX(0);
+  transform-origin: 0;
+  transition: transform 0.35s;
+}
+.card:hover .price::after {
+  transform: scaleX(1);
+}
+.catcard {
+  overflow: hidden;
+}
+.catcard:hover {
+  box-shadow: 0 18px 40px rgba(27, 79, 216, 0.18);
+}
+.rev:hover {
+  box-shadow: 0 16px 36px rgba(10, 26, 79, 0.12);
+}
+.stars {
+  transition: letter-spacing 0.4s;
+}
+.rev:hover .stars {
+  letter-spacing: 3px;
+}
+@media (hover: hover) {
+  .card:hover,
+  .catcard:hover,
+  .rev:hover {
+    transform: translateY(-6px);
+  }
+  .card:hover img {
+    transform: scale(1.07) rotate(-1.5deg);
+  }
+  .catcard:hover img {
+    transform: scale(1.08);
+  }
+}
+.banner {
+  background: linear-gradient(120deg, var(--navy), #1b4fd8, var(--navy));
+  background-size: 250% 100%;
+  animation: bg 9s ease-in-out infinite alternate;
+}
+.search {
+  transition:
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+.search:focus {
+  outline: 0;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(27, 79, 216, 0.15);
+}
+footer a {
+  background: linear-gradient(currentColor, currentColor) 0 100%/0 1px no-repeat;
+  transition: background-size 0.3s;
+}
+footer a:hover {
+  background-size: 100% 1px;
+}
+.fab {
+  animation: ring 2.6s infinite;
+  transition: transform 0.25s;
+}
+.fab:hover {
+  transform: scale(1.1) rotate(-8deg);
+}
+.fab::after {
+  content: "Escríbenos";
+  position: absolute;
+  left: 66px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: 0.25s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.fab:hover::after {
+  opacity: 1;
+  transform: none;
+}
+/* Solo navegadores con animaciones ligadas al scroll; en los demás todo se ve normal */
+@supports (animation-timeline: view()) {
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+    }
+  }
+  @keyframes hdr {
+    to {
+      box-shadow: 0 6px 24px rgba(10, 26, 79, 0.14);
+    }
+  }
+  @keyframes prog {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  .card,
+  .catcard,
+  .rev,
+  .pd > * {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  header {
+    animation: hdr linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 60;
+    background: linear-gradient(90deg, var(--sky), var(--blue));
+    transform-origin: 0 50%;
+    animation: prog linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

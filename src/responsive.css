@@ -1,0 +1,294 @@
+/* Los filtros permanecen visibles en escritorio. */
+.filters-panel {
+  align-self: start;
+}
+
+.filters-toggle {
+  display: none;
+}
+
+/* Tablet: márgenes cómodos y columnas que pueden encogerse sin desbordar. */
+@media (max-width: 1024px) {
+  .wrap {
+    padding-inline: 28px;
+  }
+
+  /* .sec y .banner también añaden padding: conservar el margen de .wrap. */
+  .wrap.sec {
+    padding-inline: 28px;
+  }
+
+  .hero-in,
+  .pd {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .hero-in > *,
+  .shop > *,
+  .pd > *,
+  .grid > *,
+  .trust > *,
+  .foot > * {
+    min-width: 0;
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(34px, 5vw, 50px);
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-img {
+    max-width: 400px;
+    justify-self: center;
+  }
+
+  .trust {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  }
+
+  .grid.c3 {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  }
+
+  .shop {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .filters-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .filters-panel .side {
+    padding: 16px;
+    margin-top: 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+
+  .filters-panel .side[data-expanded="false"] {
+    display: none;
+  }
+
+  .side label {
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .side .row {
+    flex-wrap: nowrap;
+  }
+
+  .side .row input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .search,
+  .side .row input,
+  select {
+    min-height: 44px;
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .nav a,
+  .cats a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .sec {
+    padding-top: 48px;
+  }
+
+  .hero + .sec {
+    padding-top: 92px;
+  }
+
+  .wrap.banner {
+    margin-inline: 28px;
+    padding: 28px;
+  }
+
+  .foot {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    overflow-wrap: anywhere;
+  }
+
+  .crumbs,
+  .card h3,
+  .rev p {
+    overflow-wrap: anywhere;
+  }
+
+  footer {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .fab {
+    left: max(20px, env(safe-area-inset-left, 0px));
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Móvil: cabecera en dos filas y contenido con espacio a ambos lados. */
+@media (max-width: 600px) {
+  .wrap,
+  .wrap.sec {
+    padding-inline: 24px;
+  }
+
+  .top {
+    height: auto;
+    min-height: 108px;
+    padding-block: 12px 8px;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .logo img {
+    height: 38px;
+    max-width: 180px;
+    object-fit: contain;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .top > .btn {
+    display: none;
+  }
+
+  .cats .wrap {
+    gap: 4px;
+    scroll-padding-inline: 24px;
+  }
+
+  .cats a {
+    flex-shrink: 0;
+    padding-inline: 12px;
+    font-size: 13px;
+  }
+
+  .hero-in,
+  .pd {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  .hero .row > .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-img {
+    max-width: 300px;
+  }
+
+  .trust {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+    margin-top: 32px;
+    margin-bottom: -28px;
+  }
+
+  .hero + .sec {
+    padding-top: 68px;
+  }
+
+  .sec {
+    padding-top: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .band {
+    padding: 32px 24px;
+  }
+
+  .band h1,
+  .pd h1 {
+    font-size: 30px;
+    overflow-wrap: anywhere;
+  }
+
+  .grid,
+  .grid.c3,
+  .foot {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .between > select {
+    width: 100%;
+  }
+
+  .card .btn {
+    min-height: 44px;
+  }
+
+  .price {
+    max-width: 100%;
+  }
+
+  .pd {
+    margin-bottom: 36px;
+  }
+
+  .pd > img {
+    max-width: 360px;
+    justify-self: center;
+  }
+
+  .wrap.banner {
+    margin-inline: 24px;
+    padding: 24px;
+  }
+
+  .banner .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .map {
+    height: 280px;
+  }
+
+  footer {
+    margin-top: 48px;
+  }
+}
