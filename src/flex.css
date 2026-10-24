@@ -307,26 +307,41 @@ footer a:hover {
   transition: transform 0.25s;
 }
 .fab:hover {
-  transform: scale(1.1) rotate(-8deg);
+  transform: scale(1.05);
 }
 .fab::after {
   content: "Escríbenos";
   position: absolute;
   left: 66px;
+  top: 50%;
   background: var(--navy);
   color: #fff;
   font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
   opacity: 0;
-  transform: translateX(-8px);
+  transform: translate(-8px, -50%);
+  animation: whatsapp-message 16s ease-in-out infinite;
   transition: 0.25s;
   white-space: nowrap;
   pointer-events: none;
 }
-.fab:hover::after {
+.fab:hover::after,
+.fab:focus-visible::after {
+  animation: none;
   opacity: 1;
-  transform: none;
+  transform: translate(0, -50%);
+}
+@keyframes whatsapp-message {
+  0%, 18%, 52%, 100% {
+    opacity: 0;
+    transform: translate(-8px, -50%);
+  }
+  22%, 48% {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
 }
 /* Los productos permanecen visibles: no ligar su opacidad al scroll. */
 @supports (animation-timeline: view()) {
